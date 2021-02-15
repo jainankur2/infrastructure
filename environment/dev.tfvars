@@ -11,3 +11,7 @@ account_environment = "dev"
 ec2_public_instance_ami = "ami-0996d3051b72b5b2c"
 ec2_private_instance_ami = "ami-0cd4c07118a8f1991"
 ec2_key_name = "loylogic"
+
+#route 53 details
+dns_name = "loylogic"
+public_hosted_zone = "Z06663162RGEGP7NLC0F7"
