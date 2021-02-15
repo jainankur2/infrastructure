@@ -6,3 +6,7 @@ sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \/etc/apt/so
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 
+echo "Host *" >> /var/lib/jenkins/.ssh/config
+echo "    StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
+chmod 400 /var/lib/jenkins/.ssh/config
+chown jenkins:jenkins /var/lib/jenkins/.ssh/config

@@ -3,9 +3,14 @@ output "Jenkins-Server" {
   value = aws_instance.jenkins-instance.public_ip
 }
 
-output "Ansible-Server" {
+output "Ansible-Server-public" {
   description = "Ansible server Public IP"
   value = aws_instance.ansible-instance.public_ip
+}
+
+output "Ansible-Server-private" {
+  description = "Ansible server Private IP"
+  value = aws_instance.ansible-instance.private_ip
 }
 
 output "Docker-Server1" {

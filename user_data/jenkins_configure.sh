@@ -18,3 +18,8 @@ sudo apt install maven -y
 sudo usermod -a -G docker jenkins
 
 sudo chmod 666 /var/run/docker.sock
+
+echo "Host *" >> /var/lib/jenkins/.ssh/config
+echo "    StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
+chmod 400 /var/lib/jenkins/.ssh/config
+chown jenkins:jenkins /var/lib/jenkins/.ssh/config

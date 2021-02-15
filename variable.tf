@@ -5,3 +5,4 @@ variable "ec2_private_instance_ami" {}
 variable "ec2_key_name" {}
 variable "public_hosted_zone" {}
 variable "dns_name" {}
+variable "availability_zones" {}
