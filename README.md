@@ -14,3 +14,5 @@ This can be used via cli using following command:
 1. terraform init --backend-config=environement/dev.tfvars
 2. terraform plan -var-file=environement/dev.tfvars
 3. terraform apply -var-file=environement/dev.tfvars
+
+
