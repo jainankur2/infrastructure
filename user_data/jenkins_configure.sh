@@ -19,7 +19,9 @@ sudo usermod -a -G docker jenkins
 
 sudo chmod 666 /var/run/docker.sock
 
+mkdir /var/lib/jenkins/.ssh
+touch /var/lib/jenkins/.ssh/config
 echo "Host *" >> /var/lib/jenkins/.ssh/config
 echo "    StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
 chmod 400 /var/lib/jenkins/.ssh/config
-chown jenkins:jenkins /var/lib/jenkins/.ssh/config
+chown -R jenkins:jenkins /var/lib/jenkins/.ssh

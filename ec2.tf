@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins-instance" {
-  ami           = var.ec2_public_instance_ami
-  instance_type = "t2.micro"
+  ami           = var.ec2_instance_ami
+  instance_type = "t2.small"
   vpc_security_group_ids = [
    "${aws_security_group.jenkins-instance-sg.id}" 
   ]
@@ -14,7 +14,7 @@ resource "aws_instance" "jenkins-instance" {
 }
 
 resource "aws_instance" "ansible-instance" {
-  ami           = var.ec2_public_instance_ami
+  ami           = var.ec2_instance_ami
   instance_type = "t2.micro"
   vpc_security_group_ids = [
    "${aws_security_group.ansible-instance-sg.id}"
@@ -29,14 +29,14 @@ resource "aws_instance" "ansible-instance" {
 }
 
 resource "aws_instance" "docker-instance-1" {
-  ami           = var.ec2_private_instance_ami
+  ami           = var.ec2_instance_ami
   instance_type = "t2.micro"
   vpc_security_group_ids = [
    "${aws_security_group.docker-instance-sg.id}"
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.private-subnet-1.id}"
-#  user_data = "${file("user_data//install_docker.sh")}"
+  user_data = "${file("user_data//install_docker.sh")}"
   tags = {
     Name = format("loylogic-%s-docker-instance-1", var.account_environment)
   }
@@ -44,14 +44,14 @@ resource "aws_instance" "docker-instance-1" {
 }
 
 resource "aws_instance" "docker-instance-2" {
-  ami           = var.ec2_private_instance_ami
+  ami           = var.ec2_instance_ami
   instance_type = "t2.micro"
   vpc_security_group_ids = [
    "${aws_security_group.docker-instance-sg.id}"
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.private-subnet-2.id}"
-#  user_data = "${file("user_data//install_docker.sh")}"
+  user_data = "${file("user_data//install_docker.sh")}"
   tags = {
     Name = format("loylogic-%s-docker-instance-2", var.account_environment)
   }
