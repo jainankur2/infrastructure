@@ -1,5 +1,11 @@
 # infrastructure
 This repository basically creates a vpc with 2 public and 2 private subnets, where public subnet hosts two ec2 servers with jenkins and ansible server while in private subnet 2 docker instances are hosted
+https://faun.pub/3-tier-architecture-with-terraform-and-aws-part-2-project-structure-59d1c1b7875a
+https://aws.plainenglish.io/terraform-deploying-a-three-tier-architecture-in-aws-4c8ecce40790
+Terraform: Deploy A Three-Tier Architecture in AWS
+Infrastructure as Code (IaC)
+
+
 
 ## Features
 The module will create the majorly following AWS resources:
