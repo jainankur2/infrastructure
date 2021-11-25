@@ -6,7 +6,6 @@ resource "aws_instance" "jenkins-instance" {
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.public-subnet-1.id}"
-  user_data = "${file("user_data//jenkins_configure.sh")}"
   tags = {
     Name = format("loylogic-%s-jenkins-instance", var.account_environment)
   }
@@ -21,7 +20,6 @@ resource "aws_instance" "ansible-instance" {
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.public-subnet-2.id}"
-  user_data = "${file("user_data//install_ansible.sh")}"
   tags = {
     Name = format("loylogic-%s-ansible-instance", var.account_environment)
   }
@@ -36,7 +34,6 @@ resource "aws_instance" "docker-instance-1" {
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.private-subnet-1.id}"
-  user_data = "${file("user_data//install_docker.sh")}"
   tags = {
     Name = format("loylogic-%s-docker-instance-1", var.account_environment)
   }
@@ -51,7 +48,6 @@ resource "aws_instance" "docker-instance-2" {
   ]
   key_name = var.ec2_key_name
   subnet_id = "${aws_subnet.private-subnet-2.id}"
-  user_data = "${file("user_data//install_docker.sh")}"
   tags = {
     Name = format("loylogic-%s-docker-instance-2", var.account_environment)
   }
