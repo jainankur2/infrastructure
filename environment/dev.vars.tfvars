@@ -1,6 +1,3 @@
-# Terraform state
-bucket = "loylogic-assignment"
-key = "terraform_state/infrastructure/dev/terraform.tfstate"
 region = "us-east-2"
 
 #Environment information
@@ -15,5 +12,4 @@ ec2_instance_ami = "ami-0996d3051b72b5b2c"
 ec2_key_name = "loylogic"
 
 #route 53 details
-dns_name = "loylogic"
 public_hosted_zone = "Z06663162RGEGP7NLC0F7"

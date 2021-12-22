@@ -8,7 +8,7 @@ resource "aws_instance" "jenkins-instance" {
   subnet_id = "${aws_subnet.public-subnet-1.id}"
   user_data = "${file("user_data//jenkins_configure.sh")}"
   tags = {
-    Name = format("loylogic-%s-jenkins-instance", var.account_environment)
+    Name = format("%s-%s-jenkins-instance", var.dns_name, var.account_environment)
   }
 
 }
@@ -23,7 +23,7 @@ resource "aws_instance" "ansible-instance" {
   subnet_id = "${aws_subnet.public-subnet-2.id}"
   user_data = "${file("user_data//install_ansible.sh")}"
   tags = {
-    Name = format("loylogic-%s-ansible-instance", var.account_environment)
+    Name = format("%s-%s-ansible-instance", var.dns_name, var.account_environment)
   }
 
 }
@@ -38,7 +38,7 @@ resource "aws_instance" "docker-instance-1" {
   subnet_id = "${aws_subnet.private-subnet-1.id}"
   user_data = "${file("user_data//install_docker.sh")}"
   tags = {
-    Name = format("loylogic-%s-docker-instance-1", var.account_environment)
+    Name = format("%s-%s-docker-instance-1", var.dns_name, var.account_environment)
   }
 
 }
@@ -53,7 +53,7 @@ resource "aws_instance" "docker-instance-2" {
   subnet_id = "${aws_subnet.private-subnet-2.id}"
   user_data = "${file("user_data//install_docker.sh")}"
   tags = {
-    Name = format("loylogic-%s-docker-instance-2", var.account_environment)
+    Name = format("%s-%s-docker-instance-2", var.dns_name, var.account_environment)
   }
 
 }

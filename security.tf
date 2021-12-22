@@ -1,6 +1,6 @@
 resource "aws_security_group" "jenkins-instance-sg" {
   vpc_id = "${aws_vpc.main.id}"
-  name = format("loylogic-%s-jenkins-instance-sg", var.account_environment)
+  name = format("%s-%s-jenkins-instance-sg", var.dns_name, var.account_environment)
   description = "Jenkins instance access"
   egress {
         from_port = 0
@@ -26,16 +26,16 @@ resource "aws_security_group" "jenkins-instance-sg" {
     }
 
   tags = {
-    Name = format("loylogic-%s-jenkins-instance-sg", var.account_environment)
+    Name = format("%s-%s-jenkins-instance-sg", var.dns_name, var.account_environment)
   }
 }
 
 resource "aws_security_group" "docker-instance-sg" {
   vpc_id = "${aws_vpc.main.id}"
-  name = format("loylogic-%s-docker-instance-sg", var.account_environment)
+  name = format("%s-%s-docker-instance-sg", var.dns_name, var.account_environment)
   description = "docker instance access"
   tags = {
-    Name = format("loylogic-%s-docker-instance-sg", var.account_environment)
+    Name = format("%s-%s-docker-instance-sg", var.dns_name, var.account_environment)
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_security_group_rule" "docker-alb-sg-rule-egress" {
 
 resource "aws_security_group" "ansible-instance-sg" {
   vpc_id = "${aws_vpc.main.id}"
-  name = format("loylogic-%s-ansible-instance-sg", var.account_environment)
+  name = format("%s-%s-ansible-instance-sg", var.dns_name, var.account_environment)
   description = "Ansible instance access"
   egress {
         from_port = 0
@@ -97,13 +97,13 @@ resource "aws_security_group" "ansible-instance-sg" {
     }
 
   tags = {
-    Name = format("loylogic-%s-jenkins-instance-sg", var.account_environment)
+    Name = format("%s-%s-jenkins-instance-sg", var.dns_name, var.account_environment)
   }
 }
 
 resource "aws_security_group" "loylogic-ext-alb-sg" {
   vpc_id = "${aws_vpc.main.id}"
-  name = format("loylogic-%s-loylogic-ext-alb-sg-sg", var.account_environment)
+  name = format("%s-%s-loylogic-ext-alb-sg-sg", var.dns_name, var.account_environment)
   description = "Application load balancer instance access"
   egress {
         from_port = 0
@@ -126,6 +126,6 @@ resource "aws_security_group" "loylogic-ext-alb-sg" {
     }
 
   tags = {
-    Name = format("loylogic-%s-loylogic-ext-alb-sg-sg", var.account_environment)
+    Name = format("%s-%s-loylogic-ext-alb-sg-sg", var.dns_name, var.account_environment)
   }
 }

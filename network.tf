@@ -1,7 +1,7 @@
 resource "aws_internet_gateway" "main-igw" {
     vpc_id = "${aws_vpc.main.id}"
     tags = {
-        Name = format("loylogic-%s-igw", var.account_environment)
+        Name = format("%s-%s-igw", var.dns_name, var.account_environment)
     }
 }
 
@@ -16,7 +16,7 @@ resource "aws_route_table" "public-subnet-rt" {
     }
     
     tags = {
-        Name = format("loylogic-%s-igw", var.account_environment)
+        Name = format("%s-%s-igw", var.dns_name, var.account_environment)
     }
 }
 
@@ -43,7 +43,7 @@ resource "aws_nat_gateway" "NAT_GATEWAY" {
   allocation_id = aws_eip.Nat-Gateway-EIP.id
   subnet_id = "${aws_subnet.public-subnet-1.id}"
   tags = {
-    Name = format("loylogic-%s-nat-gateway", var.account_environment)
+    Name = format("%s-%s-nat-gateway", var.dns_name, var.account_environment)
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_route_table" "NAT-Gateway-RT" {
     nat_gateway_id = aws_nat_gateway.NAT_GATEWAY.id
   }
   tags = {
-    Name = format("loylogic-%s-nat-gateway-RT", var.account_environment)
+    Name = format("%s-%s-nat-gateway-RT", var.dns_name, var.account_environment)
   }
 }
 

@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
   cidr_block       = "172.20.0.0/16"
 
   tags = {
-    Name = format("loylogic-%s-vpc", var.account_environment)
+    Name = format("%s-%s-vpc", var.dns_name, var.account_environment)
   }
 }
 
@@ -12,7 +12,7 @@ resource "aws_subnet" "public-subnet-1" {
     map_public_ip_on_launch = "true"
     availability_zone = var.availability_zones[0]
     tags = {
-        Name = format("loylogic-%s-public-subnet-1", var.account_environment)
+        Name = format("%s-%s-public-subnet-1", var.dns_name, var.account_environment)
     }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "public-subnet-2" {
     map_public_ip_on_launch = "true"
     availability_zone = var.availability_zones[1]
     tags = {
-        Name = format("loylogic-%s-public-subnet-2", var.account_environment)
+        Name = format("%s-%s-public-subnet-2", var.dns_name, var.account_environment)
     }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "private-subnet-1" {
     map_public_ip_on_launch = "false"
     availability_zone = var.availability_zones[0]
     tags = {
-        Name = format("loylogic-%s-private-subnet-1", var.account_environment)
+        Name = format("%s-%s-private-subnet-1", var.dns_name, var.account_environment)
     }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "private-subnet-2" {
     map_public_ip_on_launch = "false"
     availability_zone = var.availability_zones[1]
     tags = {
-        Name = format("loylogic-%s-private-subnet-2", var.account_environment)
+        Name = format("%s-%s-private-subnet-2", var.dns_name, var.account_environment)
     }
 }
 

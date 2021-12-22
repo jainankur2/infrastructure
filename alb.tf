@@ -1,5 +1,5 @@
 resource "aws_alb" "loylogic-ext-lb" {
-  name = format("loylogic-%s-load-balancer", var.account_environment)
+  name = format("%s-%s-load-balancer", var.dns_name, var.account_environment)
   internal = false
   load_balancer_type = "application"
   subnets = ["${aws_subnet.public-subnet-1.id}","${aws_subnet.public-subnet-2.id}"]
@@ -7,12 +7,12 @@ resource "aws_alb" "loylogic-ext-lb" {
     aws_security_group.loylogic-ext-alb-sg.id
   ]
   tags = {
-    Name = format("loylogic-%s-load-balancer", var.account_environment) 
+    Name = format("%s-%s-load-balancer", var.dns_name, var.account_environment) 
   }
 }
 
 resource "aws_alb_target_group" "loylogic-docker-tg-1" {
-  name     = format("loylogic-%s-docker-tg-1", var.account_environment)
+  name     = format("%s-%s-docker-tg-1", var.dns_name, var.account_environment)
   port     = 80
   protocol = "HTTP"
   target_type = "instance"
@@ -23,7 +23,7 @@ resource "aws_alb_target_group" "loylogic-docker-tg-1" {
     matcher = "200"
   }
   tags = {
-    Name = format("loylogic-%s-docker-tg-1", var.account_environment) 
+    Name = format("%s-%s-docker-tg-1", var.dns_name, var.account_environment) 
   }
 }
 
@@ -34,7 +34,7 @@ resource "aws_lb_target_group_attachment" "tg-1-attachment" {
 }
 
 resource "aws_alb_target_group" "loylogic-docker-tg-2" {
-  name     = format("loylogic-%s-docker-tg-2", var.account_environment)
+  name     = format("%s-%s-docker-tg-2", var.dns_name, var.account_environment)
   port     = 8080
   protocol = "HTTP"
   target_type = "instance"
@@ -45,7 +45,7 @@ resource "aws_alb_target_group" "loylogic-docker-tg-2" {
     matcher = "200"
   }
   tags = {
-    Name = format("loylogic-%s-docker-tg-2", var.account_environment)
+    Name = format("%s-%s-docker-tg-2", var.dns_name, var.account_environment)
   }
 }
 
